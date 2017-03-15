@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
@@ -5,7 +7,15 @@ import static org.junit.Assert.*;
  */
 public class CardTest {
 
-    int x = 52;
-    int value = 0;
+    @Test
+    public void setSuit() {
+        Card test = new Card();
+
+        System.out.println(test.toString());
+
+        test.setSuit("Spades");
+
+        assertEquals("Spades",test.getSuit());
+    }
 
 }
