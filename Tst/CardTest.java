@@ -6,5 +6,6 @@ import static org.junit.Assert.*;
 public class CardTest {
 
     int x = 52;
+    int value = 0;
 
 }
