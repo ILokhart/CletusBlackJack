@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
@@ -5,4 +7,9 @@ import static org.junit.Assert.*;
  */
 public class HandTest {
 
+    @Test
+    public void testDraw() {
+        Hand testHand = new Hand();
+
+    }
 }
