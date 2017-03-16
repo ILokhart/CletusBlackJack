@@ -3,16 +3,18 @@
  */
 public class Card {
 
-    String suit;
-    int value;
+    private String suit;
+    private int value;
+    private String sValue;
 
     public Card()
     {
     }
 
-    public Card(String _suit, int _value) {
+    public Card(String _suit, int _value, String _sValue) {
         suit = _suit;
         value = _value;
+        sValue = _sValue;
     }
 
     public String getSuit() {
@@ -24,6 +26,22 @@ public class Card {
     }
 
     public String toString() {
-        return suit + " of " + value;
+        return sValue + " of " + suit;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public String getSValue() {
+        return sValue;
+    }
+
+    public void setSValue(String SValue) {
+        this.sValue = SValue;
     }
 }
