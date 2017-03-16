@@ -40,7 +40,10 @@ public class Deck {
             for(Integer i = 1; i < 14;i++) {
                 tempCard = new Card();
                 tempCard.setSuit(suit);
-                if(i >10) {
+                if(i == 1) {
+                    tempCard.setValue(11);
+                }
+                else if(i >10) {
                     tempCard.setValue(10);
                 }
                 else {
