@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 public class Hand {
 
-    ArrayList<Card> cards = new ArrayList<Card>();
+    private ArrayList<Card> cards = new ArrayList<Card>();
 
     public void addCard(Card card) {
         cards.add(card);
@@ -44,22 +44,21 @@ public class Hand {
             total = total + x.getValue();
         }
 
+        if(total > 21 && containsAce()) {
+            changeAce();
+            total = total();
+        }
+
         return total;
     }
 
     public boolean isBust() {
         boolean bust = false;
         boolean containsAce = containsAce();
-        if(total() > 21 && !containsAce() ) {
+        if(total() > 21) {
             bust =true;
 
         }
-        else if (total() > 21 && containsAce()) {
-            changeAce();
-            bust = isBust();
-
-        }
-
         return bust;
     }
 

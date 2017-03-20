@@ -307,7 +307,7 @@ public class DeckTest {
     public void testGetCard() {
         Deck d = new Deck();
         d.addCard(new Card("Spades",1,"Ace"));
-        Card c = d.getCard();
+        Card c = d.nextCard();
 
         assertEquals(c.toString(),new Card("Spades",1,"Ace").toString());
     }

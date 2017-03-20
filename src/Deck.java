@@ -13,7 +13,7 @@ public class Deck {
         return cardDeck;
     }
 
-    public Card getCard() {
+    public Card nextCard() {
         return cardDeck.pop();
     }
 
