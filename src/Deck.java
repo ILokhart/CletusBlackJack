@@ -73,6 +73,10 @@ public class Deck {
 
     }
 
+    public boolean isEmpty() {
+        return cardDeck.isEmpty();
+    }
+
     public String toString() {
         return cardDeck.toString();
     }

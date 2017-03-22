@@ -37,8 +37,13 @@ public class Person {
 
     @Override
     public String toString() {
-        return name + " has " + money + " and " + hand.total() + " points.";
+        return name + " has " + money + " and " + hand.total() + " Showing";
     }
 
     public void addCard(Card card) {        hand.addCard(card);
-    }}
+    }
+
+    public void clearHand(){
+        hand.clear();
+    }
+}

@@ -45,6 +45,10 @@ public class PersonTest {
         assertTrue(fred.getHand().contains(card3));
         assertTrue(fred.getHand().contains(card4));
 
+        fred.clearHand();
+
+        assertTrue(fred.getHand().empty());
+
 
     }
 
