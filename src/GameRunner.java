@@ -28,9 +28,11 @@ public class GameRunner {
             System.out.println("Handing out cards!");
 
             game.hitPlayer();
+            game.hitDealer();
             game.hitPlayer();
+            game.hitDealer();
 
-
+            System.out.println("Dealer hand contains the following cards " + game.getDealerHand());
             System.out.println("Your hand contains the following cards " + game.getPlayerHand());
             while(!game.getPlayerHand().isBust() && game.getNumPlayerCards() < MAXNUMBERCARDS) {
 
@@ -47,9 +49,39 @@ public class GameRunner {
                 else {
                     System.out.println(hit + " is not valid input. Please try again");
                 }
+
+                if(game.deckEmpty()) {
+                    game.generateDeck();
+                }
+
+
+
                 System.out.println("Your hand contains the following cards " + game.getPlayerHand());
             }
+
+            if(game.getPlayerHand().isBust()) {
+                System.out.println("You busted at " + game.getPlayerScore() + " points");
+
+            }
+            else {
+                System.out.println("You currently sit at " + game.getPlayerScore() +  " points ");
+            }
+
+
+
+            //clear the hands when the round is over
+            game.getPlayerHand().clear();
+            game.getDealerHand().clear();
+
+
             
+        }
+
+        if(game.getPlayerMoney() > 5000) {
+            System.out.println("You beat the house. Congratulations!");
+        }
+        else {
+            System.out.println("You lost all your money! You Loose");
         }
 
     }
