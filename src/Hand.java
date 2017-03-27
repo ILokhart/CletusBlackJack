@@ -11,6 +11,10 @@ public class Hand {
         cards.add(card);
     }
 
+    public int getNumCards() {
+        return cards.size();
+    }
+
     public boolean contains(Card card) {
         boolean inHand = false;
         for(Card x: cards)

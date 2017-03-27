@@ -83,4 +83,21 @@ public class HandTest {
 
 
     }
+
+    @Test
+    public void getNumCardsTest() {
+
+        Hand testHand = new Hand();
+
+        Card card1 = new Card("Spades",11,"Ace");
+        Card card2 = new Card("Hearts",5,"5");
+        Card card3 = new Card("Diamond",5,"5");
+
+        testHand.addCard(card1);
+        testHand.addCard(card2);
+        testHand.addCard(card3);
+
+        assertEquals(3,testHand.getNumCards());
+
+    }
 }

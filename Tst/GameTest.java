@@ -56,20 +56,8 @@ public class GameTest {
         gameTest.hitDealer();
         gameTest.hitDealer();
         gameTest.hitDealer();
-        gameTest.hitDealer();
-        gameTest.hitDealer();
-        gameTest.hitDealer();
-        gameTest.hitDealer();
-        gameTest.hitDealer();
 
-        gameTest.hitPlayer();
-        gameTest.hitPlayer();
-        gameTest.hitPlayer();
-        gameTest.hitPlayer();
-        gameTest.hitPlayer();
-        gameTest.hitPlayer();
-        gameTest.hitPlayer();
-        gameTest.hitPlayer();
+
         gameTest.hitPlayer();
         gameTest.hitPlayer();
         gameTest.hitPlayer();
@@ -82,6 +70,41 @@ public class GameTest {
 
         assertTrue(gameTest.dealerBust());
         assertTrue(gameTest.playerBust());
+    }
+
+    @Test
+    public void testGetHand() {
+        Game myGame = new Game();
+
+        myGame.generateDeck();
+
+        assertTrue(myGame.getPlayerHand().empty());
+        assertTrue(myGame.getDealerHand().empty());
+
+        myGame.hitDealer();
+        myGame.hitPlayer();
+
+        assertFalse(myGame.getPlayerHand().empty());
+        assertFalse(myGame.getDealerHand().empty());
+    }
+
+    @Test
+    public void testGetNumCards() {
+
+        Game myGame = new Game();
+
+        myGame.generateDeck();
+
+        assertEquals(0,myGame.getNumDealerCards());
+        assertEquals(0,myGame.getNumPlayerCards());
+
+        myGame.hitDealer();
+        myGame.hitPlayer();
+
+        assertEquals(1,myGame.getNumDealerCards());
+        assertEquals(1,myGame.getNumPlayerCards());
+
+
     }
 
 }

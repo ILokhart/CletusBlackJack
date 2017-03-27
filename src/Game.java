@@ -52,4 +52,25 @@ public class Game {
     public boolean playerBust() {
         return player.getHand().isBust();
     }
+
+    public Hand getPlayerHand() {
+
+        return player.getHand();
+    }
+
+    public Hand getDealerHand() {
+        return dealer.getHand();
+    }
+
+    public int getNumPlayerCards() {
+        return player.getHand().getNumCards();
+    }
+
+    public int getNumDealerCards() {
+        return dealer.getHand().getNumCards();
+    }
+
+
+
+
 }

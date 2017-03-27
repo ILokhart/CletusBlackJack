@@ -6,6 +6,7 @@ import java.util.Scanner;
  */
 public class GameRunner {
 
+    public static final int MAXNUMBERCARDS = 5;
     public static void main(String[] args) {
         String betAmount = "";
         String hit = "";
@@ -30,9 +31,9 @@ public class GameRunner {
             game.hitPlayer();
 
 
-            System.out.println(game.getPlayerHand());
-            while(!game.getPlayerHand().isBust() && game.getNumPlayerCards() < 5) {
-                System.out.println(game.getPlayerHand());
+            System.out.println("Your hand contains the following cards " + game.getPlayerHand());
+            while(!game.getPlayerHand().isBust() && game.getNumPlayerCards() < MAXNUMBERCARDS) {
+
                 System.out.println("Your score is " + game.getPlayerScore());
                 System.out.println("Hit or stay?");
                 hit = input.next();
