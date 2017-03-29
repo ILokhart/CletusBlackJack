@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class GameRunner {
 
 
-    public static final int MAXNUMBERCARDS = 5;
+
     public static final int SLEEPTIME = 1500;
     public static void main(String[] args) {
         String betAmount = "";
@@ -87,7 +87,7 @@ public class GameRunner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            while(!game.getPlayerHand().isBust() && game.getNumPlayerCards() < MAXNUMBERCARDS) {
+            while(!game.getPlayerHand().isBust()) {
 
                 System.out.println("Your score is " + game.getPlayerScore());
                 try {
