@@ -56,6 +56,8 @@ public class Hand {
         return total;
     }
 
+
+
     public boolean isBust() {
         boolean bust = false;
         boolean containsAce = containsAce();
@@ -70,7 +72,7 @@ public class Hand {
 
         for(Card x: cards)
         {
-            if(x.getSValue().equals("Ace")) {
+            if(x.getSValue().equals("Ace") && x.getValue() == 11) {
                 x.setValue(1);
                 return;
             }
@@ -90,5 +92,21 @@ public class Hand {
         }
 
         return contains;
+    }
+
+    public int show() {
+        int total = 0;
+        for(int i = 1; i < cards.size();i++) {
+            total += cards.get(i).getValue();
+        }
+        return total;
+    }
+
+    public String getFaceUpCards() {
+        String card = "";
+        for(int i = 1; i < cards.size();i++) {
+            card = card + " " + cards.get(i).toString();
+        }
+        return card;
     }
 }

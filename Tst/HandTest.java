@@ -100,4 +100,27 @@ public class HandTest {
         assertEquals(3,testHand.getNumCards());
 
     }
-}
+
+    @Test
+    public void getFaceUpCardsTest() {
+
+        Hand testHand = new Hand();
+        String str = " 10 of Clubs";
+
+        testHand.addCard(new Card("Hearts", 7, "7"));
+        testHand.addCard(new Card("Clubs", 10, "10"));
+
+        assertEquals(str,testHand.getFaceUpCards());
+    }
+
+    @Test
+    public void getShowTest() {
+        Hand testHand = new Hand();
+
+        testHand.addCard(new Card("Hearts", 7, "7"));
+        testHand.addCard(new Card("Clubs", 10, "10"));
+
+        assertEquals(10,testHand.show());
+    }
+
+    }

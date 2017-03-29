@@ -70,6 +70,26 @@ public class Game {
         return dealer.getHand().getNumCards();
     }
 
+    public int getDealerShow() {
+        return dealer.getShow();
+    }
+
+    public int getPlayerShow() {
+        return player.getShow();
+    }
+
+    public String getDealerShowHand() {
+        return dealer.getDealerShowHand();
+    }
+
+    public void setPlayerMoney(int x) {
+        player.setMoney(x);
+    }
+
+    public void setDealerMoney(int x) {
+        dealer.setMoney(x);
+    }
+
 
 
 

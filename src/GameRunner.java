@@ -1,10 +1,11 @@
-import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
  * Created by Jory on 3/23/17.
  */
 public class GameRunner {
+
 
     public static final int MAXNUMBERCARDS = 5;
     public static void main(String[] args) {
@@ -13,6 +14,8 @@ public class GameRunner {
         Scanner input = new Scanner(System.in);
         Game game = new Game();
         game.generateDeck();
+        Random random = new Random();
+        int ran;
 
         while(game.getPlayerMoney() >0 && game.getPlayerMoney() <5000) {
 
@@ -32,7 +35,7 @@ public class GameRunner {
             game.hitPlayer();
             game.hitDealer();
 
-            System.out.println("Dealer hand contains the following cards " + game.getDealerHand());
+            System.out.println("Dealer hand shows following cards " + game.getDealerShowHand());
             System.out.println("Your hand contains the following cards " + game.getPlayerHand());
             while(!game.getPlayerHand().isBust() && game.getNumPlayerCards() < MAXNUMBERCARDS) {
 
@@ -67,6 +70,57 @@ public class GameRunner {
                 System.out.println("You currently sit at " + game.getPlayerScore() +  " points ");
             }
 
+            while(!game.dealerBust()) {
+
+                if (game.getDealerScore() < 11) {
+                    System.out.println("Dealer Hits");
+                    game.hitDealer();
+                } else if (game.getDealerScore() >= 11 && game.getDealerScore() < 16) {
+                    ran = random.nextInt(3);
+                    if (ran > 0) {
+                        System.out.println("Dealer Hits");
+                        game.hitDealer();
+                    }
+                    else {
+                        System.out.println("Dealer Stays");
+                        break;
+                    }
+
+                } else if (game.getDealerScore() >= 16 && game.getDealerScore() < 21) {
+                    ran = random.nextInt(3);
+
+                    if (ran == 0) {
+                        System.out.println("Dealer Hits");
+                        game.hitDealer();
+                    }
+                    else {
+                        System.out.println("Dealer Stays");
+                        break;
+                    }
+                }
+
+                System.out.println("Dealer hand shows following cards " + game.getDealerShowHand());
+
+
+            }
+
+            System.out.println("Dealer reveals hand that contains " + game.getDealerHand());
+            System.out.println("You have " + game.getPlayerScore() + " poits.");
+            System.out.println("Dealer has " + game.getDealerScore() + " poits.");
+
+            if ((game.getDealerScore() >= game.getPlayerScore() || game.playerBust()) && !game.dealerBust()) {
+                System.out.println("Dealer Wins you loose " + betAmount + " dollars.");
+                game.setPlayerMoney(game.getPlayerMoney() - Integer.parseInt(betAmount));
+                game.setDealerMoney(game.getPDealerMoney() + Integer.parseInt(betAmount));
+            }
+            else {
+                System.out.println("You Win!");
+                game.setPlayerMoney(game.getPlayerMoney() + Integer.parseInt(betAmount)  * 2);
+                game.setDealerMoney(game.getPDealerMoney() - Integer.parseInt(betAmount));
+            }
+
+
+
 
 
             //clear the hands when the round is over
@@ -77,7 +131,7 @@ public class GameRunner {
             
         }
 
-        if(game.getPlayerMoney() > 5000) {
+        if(game.getPlayerMoney() >= 5000) {
             System.out.println("You beat the house. Congratulations!");
         }
         else {

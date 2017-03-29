@@ -46,4 +46,13 @@ public class Person {
     public void clearHand(){
         hand.clear();
     }
+
+    public int getShow() {
+
+        return hand.show();
+    }
+
+    public String getDealerShowHand() {
+        return hand.getFaceUpCards();
+    }
 }
