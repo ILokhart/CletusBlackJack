@@ -44,6 +44,18 @@ public class GameRunner {
 
             }
 
+            if(Integer.parseInt(betAmount) > game.getPlayerMoney()) {
+                try {
+                    Thread.sleep(SLEEPTIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                betAmount = "" + game.getPlayerMoney();
+                System.out.println("You bet more money than you have lowering bet to your total wallet amount.");
+            }
+
+
+
 
             System.out.println("You bet " + betAmount + " dollars.");
             try {
@@ -185,6 +197,9 @@ public class GameRunner {
                         }
                         break;
                     }
+                }
+                else {
+                    break;
                 }
 
                 System.out.println("Dealer hand shows following cards " + game.getDealerShowHand());
