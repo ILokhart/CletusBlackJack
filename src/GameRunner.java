@@ -8,6 +8,7 @@ public class GameRunner {
 
 
     public static final int MAXNUMBERCARDS = 5;
+    public static final int SLEEPTIME = 1500;
     public static void main(String[] args) {
         String betAmount = "";
         String hit = "";
@@ -21,14 +22,41 @@ public class GameRunner {
 
             System.out.println("You curretnly have " + game.getPlayerMoney() + " dollars. Enter the whole number amount " +
                     "you would like to bet?");
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             betAmount = input.next();
 
-            while(betAmount.contains(".")){
-                System.out.println(betAmount + "is not a whole number please enter a whole number.");
-                betAmount = input.next();
+            for(int i = 0; i < betAmount.length(); i++) {
+
+                if(!Character.isDigit(betAmount.charAt(i))) {
+                    System.out.println(betAmount + " is not a valid whole number bet please try again");
+                    try {
+                        Thread.sleep(SLEEPTIME);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    i = 0;
+                    betAmount = input.next();
+                }
+
             }
+
+
             System.out.println("You bet " + betAmount + " dollars.");
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("Handing out cards!");
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             game.hitPlayer();
             game.hitDealer();
@@ -36,11 +64,31 @@ public class GameRunner {
             game.hitDealer();
 
             System.out.println("Dealer hand shows following cards " + game.getDealerShowHand());
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("Your hand contains the following cards " + game.getPlayerHand());
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             while(!game.getPlayerHand().isBust() && game.getNumPlayerCards() < MAXNUMBERCARDS) {
 
                 System.out.println("Your score is " + game.getPlayerScore());
+                try {
+                    Thread.sleep(SLEEPTIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Hit or stay?");
+                try {
+                    Thread.sleep(SLEEPTIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 hit = input.next();
 
                 if(hit.equalsIgnoreCase("hit")) {
@@ -51,6 +99,11 @@ public class GameRunner {
                 }
                 else {
                     System.out.println(hit + " is not valid input. Please try again");
+                    try {
+                        Thread.sleep(SLEEPTIME);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 if(game.deckEmpty()) {
@@ -60,10 +113,20 @@ public class GameRunner {
 
 
                 System.out.println("Your hand contains the following cards " + game.getPlayerHand());
+                try {
+                    Thread.sleep(SLEEPTIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             if(game.getPlayerHand().isBust()) {
                 System.out.println("You busted at " + game.getPlayerScore() + " points");
+                try {
+                    Thread.sleep(SLEEPTIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
             else {
@@ -74,15 +137,30 @@ public class GameRunner {
 
                 if (game.getDealerScore() < 11) {
                     System.out.println("Dealer Hits");
+                    try {
+                        Thread.sleep(SLEEPTIME);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     game.hitDealer();
                 } else if (game.getDealerScore() >= 11 && game.getDealerScore() < 16) {
                     ran = random.nextInt(3);
                     if (ran > 0) {
                         System.out.println("Dealer Hits");
+                        try {
+                            Thread.sleep(SLEEPTIME);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         game.hitDealer();
                     }
                     else {
                         System.out.println("Dealer Stays");
+                        try {
+                            Thread.sleep(SLEEPTIME);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     }
 
@@ -91,22 +169,52 @@ public class GameRunner {
 
                     if (ran == 0) {
                         System.out.println("Dealer Hits");
+                        try {
+                            Thread.sleep(SLEEPTIME);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         game.hitDealer();
                     }
                     else {
                         System.out.println("Dealer Stays");
+                        try {
+                            Thread.sleep(SLEEPTIME);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     }
                 }
 
                 System.out.println("Dealer hand shows following cards " + game.getDealerShowHand());
+                try {
+                    Thread.sleep(SLEEPTIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 
             }
 
             System.out.println("Dealer reveals hand that contains " + game.getDealerHand());
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("You have " + game.getPlayerScore() + " poits.");
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("Dealer has " + game.getDealerScore() + " poits.");
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             if ((game.getDealerScore() >= game.getPlayerScore() || game.playerBust()) && !game.dealerBust()) {
                 System.out.println("Dealer Wins you loose " + betAmount + " dollars.");
@@ -115,7 +223,7 @@ public class GameRunner {
             }
             else {
                 System.out.println("You Win!");
-                game.setPlayerMoney(game.getPlayerMoney() + Integer.parseInt(betAmount)  * 2);
+                game.setPlayerMoney(game.getPlayerMoney() + Integer.parseInt(betAmount));
                 game.setDealerMoney(game.getPDealerMoney() - Integer.parseInt(betAmount));
             }
 
@@ -126,6 +234,12 @@ public class GameRunner {
             //clear the hands when the round is over
             game.getPlayerHand().clear();
             game.getDealerHand().clear();
+
+            try {
+                Thread.sleep(SLEEPTIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
 
             
